@@ -10,7 +10,7 @@
     "newArchEnabled": true,
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "com.bacon.bacomponents",
+      "bundleIdentifier": "dev.codewithbeto.hotchocolatefest",
       "infoPlist": {
         "UIViewControllerBasedStatusBarAppearance": true,
         "ITSAppUsesNonExemptEncryption": false
@@ -20,7 +20,13 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/images/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "config": {
+        "googleMaps": {
+          "apiKey": "AIzaSyBY8gB9nvtVGNS2M7jxwJTFNG5hZ0ZX4SQ"
+        }
+      },
+      "package": "dev.codewithbeto.hotchocolatefest"
     },
     "web": {
       "bundler": "metro",
@@ -45,8 +51,11 @@
       "typedRoutes": true
     },
     "extra": {
+      "router": {
+        "origin": false
+      },
       "eas": {
-        "projectId": "8369b038-5983-47e3-88e8-1dcf3eb1566c"
+        "projectId": "5bc176b7-1d18-4f96-9592-cf04cf9b9975"
       }
     }
   }
