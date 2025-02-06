@@ -10,8 +10,8 @@ export const unstable_settings = {
   index: {
     initialRouteName: "index",
   },
-  info: {
-    initialRouteName: "info",
+  map: {
+    initialRouteName: "map",
   },
 };
 

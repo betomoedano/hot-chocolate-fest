@@ -7,11 +7,7 @@ export default function Layout() {
     <ThemeProvider>
       <Tabs>
         <Tabs.Screen name="(index)" systemImage="house.fill" title="Home" />
-        <Tabs.Screen
-          name="(info)"
-          systemImage="cursorarrow.rays"
-          title="Info"
-        />
+        <Tabs.Screen name="(map)" systemImage="map.fill" title="Map" />
       </Tabs>
     </ThemeProvider>
   );
