@@ -3,14 +3,14 @@ import * as Form from "@/components/ui/Form";
 import Stack from "@/components/ui/Stack";
 import * as AC from "@bacons/apple-colors";
 import { Link } from "expo-router";
-import { Text, View } from "react-native";
+import { Platform, Text, View } from "react-native";
 import Animated, {
   interpolate,
   useAnimatedRef,
   useAnimatedStyle,
   useScrollViewOffset,
 } from "react-native-reanimated";
-import { AppleMaps } from "expo-maps";
+import { AppleMaps, GoogleMaps } from "expo-maps";
 import { locationList } from "../../LocationList.js";
 
 export default function Page() {
@@ -53,30 +53,42 @@ export default function Page() {
         }}
       />
       <View style={{ flex: 1 }}>
-        <AppleMaps.View
-          style={{ width: "auto", height: "100%" }}
-          cameraPosition={{
-            coordinates: {
-              latitude: 49.19163,
-              longitude: -122.85056,
-            },
-            zoom: 8,
-          }}
-          onMapClick={(e) => {
-            setLastEvent(
-              JSON.stringify({ type: "onMapClick", data: e }, null, 2)
-            );
-          }}
-          onCameraMove={(e) => {
-            setLastEvent(
-              JSON.stringify({ type: "onCameraMove", data: e }, null, 2)
-            );
-          }}
-          markers={markers.flat()}
-          onMarkerClick={(e) => {
-            console.log(e);
-          }}
-        />
+        {Platform.OS === "ios" ? (
+          <AppleMaps.View
+            style={{ width: "auto", height: "100%" }}
+            cameraPosition={{
+              coordinates: {
+                latitude: 49.19163,
+                longitude: -122.85056,
+              },
+              zoom: 8,
+            }}
+            onMapClick={(e) => {
+              setLastEvent(
+                JSON.stringify({ type: "onMapClick", data: e }, null, 2)
+              );
+            }}
+            onCameraMove={(e) => {
+              setLastEvent(
+                JSON.stringify({ type: "onCameraMove", data: e }, null, 2)
+              );
+            }}
+            markers={markers.flat()}
+            onMarkerClick={(e) => {
+              console.log(e);
+            }}
+          />
+        ) : (
+          <GoogleMaps.View
+            style={{ width: "auto", height: "100%" }}
+            cameraPosition={{
+              coordinates: {
+                latitude: 49.19163,
+                longitude: -122.85056,
+              },
+            }}
+          />
+        )}
       </View>
     </>
     // <Form.List ref={ref} navigationTitle="Bottom Sheet" listStyle="grouped">
