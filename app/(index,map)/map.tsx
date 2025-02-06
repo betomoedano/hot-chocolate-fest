@@ -9,6 +9,7 @@ import Animated, {
   useAnimatedStyle,
   useScrollViewOffset,
 } from "react-native-reanimated";
+import { AppleMaps } from "expo-maps";
 
 export default function Page() {
   const ref = useAnimatedRef();
@@ -51,6 +52,19 @@ export default function Page() {
           }}
         />
       )}
+
+      <View style={{ flex: 1 }}>
+        <AppleMaps.View
+          style={{ width: "auto", height: "100%" }}
+          cameraPosition={{
+            coordinates: {
+              latitude: 51.509865,
+              longitude: -0.1275,
+            },
+            zoom: 1,
+          }}
+        />
+      </View>
 
       <Form.Section
         title="Vision"
