@@ -12,6 +12,7 @@ import Animated, {
 } from "react-native-reanimated";
 import { AppleMaps, GoogleMaps } from "expo-maps";
 import { locationList } from "../../LocationList.js";
+import { MapColorScheme } from "expo-maps/build/google/GoogleMaps.types.js";
 
 export default function Page() {
   const [lastEvent, setLastEvent] = React.useState<string>("");
@@ -80,13 +81,24 @@ export default function Page() {
           />
         ) : (
           <GoogleMaps.View
-            style={{ width: "auto", height: "100%" }}
+            style={{ flex: 1 }}
             cameraPosition={{
               coordinates: {
                 latitude: 49.19163,
                 longitude: -122.85056,
               },
+              zoom: 10,
             }}
+            markers={markers.flat()}
+            onMapClick={(e) => {
+              console.log(e);
+            }}
+            colorScheme={MapColorScheme.FOLLOW_SYSTEM}
+            uiSettings={{}}
+            // properties={{
+            //   maxZoomPreference: 20,
+            //   minZoomPreference: 1,
+            // }}
           />
         )}
       </View>
